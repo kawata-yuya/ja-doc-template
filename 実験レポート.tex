@@ -1,0 +1,157 @@
+\documentclass[uplatex,a4paper,11pt]{jsarticle} % uplatexオプションを入れる
+%\documentclass{jarticle}
+\usepackage{geometry}
+%\geometry{left=25mm, right=25mm, top=30mm, bottom=30mm, truedimen}
+\geometry{left=18.75mm, right=18.75mm, top=22.5mm, bottom=22.5mm, truedimen}
+
+\usepackage[T1]{fontenc}             % T1エンコーディングにしてみる
+\usepackage{plext}                   % pLaTeX付属の縦書き支援パッケージ
+\usepackage{okumacro}                % jsclassesに同梱のパッケージ
+
+\usepackage{titlesec}
+\usepackage{array}
+\usepackage{amssymb} 
+\usepackage{amsmath} 
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{midpage}
+
+
+%\usepackage{latexsym}
+\usepackage{mathtools}
+
+% 画像系パッケージの読み込み
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+\captionsetup{labelsep=quad}
+
+%\usepackage{lscape}
+\usepackage[dvipdfmx]{pdflscape}
+\usepackage{comment}
+\usepackage{url}
+
+% pdfのしおり
+\usepackage[dvipdfmx]{hyperref}         %ハイパーリンク
+\usepackage{pxjahyper}                  %ハイパーリンク
+
+\hypersetup{
+    pdfauthor={川田侑弥},               % 自分の名前に変える
+    pdftitle={title},                   % お好みのタイトル
+    pdfsubject={},
+    pdfkeywords={report;},
+    pdfproducer={LaTeX},
+    pdfcreator={pdfLaTeX},
+    pdfduplex={none},     %Alt.: Simplex or DuplexFlipShortEdge 
+    pdflang={jp}, % en
+    bookmarksnumbered=true,
+    colorlinks=false,
+    pdfborder={0 0 0},
+}
+
+\def\thefootnote{\arabic{footnote}}
+
+\usepackage[version=3]{mhchem}      % 化学式用パッケージ(\ce{C + O2 -> CO2})
+
+\setcounter{secnumdepth}{3}
+\titlelabel{\thetitle.\:}
+\titleformat{\section}{\normalfont\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries}{\thesubsubsection}{1em}{}
+
+
+% 番号フォーマット
+\numberwithin{equation}{section}     % 数式番号フォーマット
+\renewcommand{\thefigure}{\arabic{section}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{section}.\arabic{table}}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\makeatletter
+\@addtoreset{equation}{section}
+\@addtoreset{figure}{section}
+\@addtoreset{table}{section}
+\renewcommand{\@cite}[1]{\textsuperscript{(#1)}}     % 本文中の引用のフォーマット変更
+\renewcommand{\@biblabel}[1]{(#1)}                   % 参考文献のフォーマット
+\makeatother
+
+\title{タイトルタイトル}
+\date{\today}
+
+\begin{document}
+%=====表紙=====%
+% \input{titlepage.tex}                     % 課題用の表紙
+\input{titlepage_for_experiment.tex}        % 実験レポート用の表紙
+% \input{title.tex}                         % 共有資料用の表紙
+
+%=====本文=====%
+\section{目的}
+これがセクションです．
+改行しても表示は改行されません．
+
+1行開けると改行と段落分けできます．
+強制的に改行\\させるには，バックスラッシュを2つを使います．
+% 文章やコマンドを無効化したい行があれば，
+\%を前においてあげると無効化できます．      % おしりにもつけれます．これは表示されません．
+ああああああ．
+
+
+\subsection{bbb}
+\subsubsection{ccc}
+
+ああああああああああああああああああああああああ
+
+\section{原理}
+
+オイラーの等式を(\ref{eq:オイラーの等式})式に示す．
+\begin{equation}
+    e^{i \pi} + 1 = 0   \label{eq:オイラーの等式}
+\end{equation}
+
+瞬時電力の計算
+\begin{align}
+    v(t) &= \sin\left(\omega t\right) \\
+    i(t) &= \sin\left(\omega t + \varphi\right) \\
+    p(t) &= \int_{0}^{t} v\left(\tau\right) \cdot i\left(\tau\right) d\tau 
+            = \int_{0}^{t} \sin\left(\omega \tau + \varphi\right) \cdot \sin\left(\omega \tau \right) d\tau
+\end{align}
+
+連立方程式
+\begin{equation}
+    \left\{ 
+    \begin{aligned}
+        x + y + z &= 1 \\
+        2x + 3y + 4z &= 5 \\
+        6x + 7y + 8z &= 9 \\
+    \end{aligned}
+    \right.
+\end{equation}
+
+\begin{equation}
+    \ce{C + O2 -> CO2}
+\end{equation}
+
+\section{次のセクション}
+これはおそらく3. 次のセクションと表示されるでしょう．
+参考文献の参照方法は，
+時定数とは〇〇であることが知られている\cite{jiteisu2024}．
+
+
+%=====参考文献=====%
+% 参考文献を手動で書く場合(以下5行のコメントアウト解除)
+\vspace{10mm}
+\begin{thebibliography}{9}
+    \bibitem{sasaki2013} 佐々木太郎, \quad フィードバック制御入門, \quad 株式会社xxx社 ,\quad 2013年
+    \bibitem{jiteisu2024} "時定数", ウィキペディア, \quad \url{https://ja.wikipedia.org/wiki/%E6%99%82%E5%AE%9A%E6%95%B0}, \quad (参照 2024-06-09)
+\end{thebibliography}
+
+
+%参考文献の取り込み（library.bibというファイルが存在する場合）
+% BibTexを使う場合
+% \vspace{10mm}
+% \bibliography{library}
+% \bibliographystyle{junsrt}      % 参考文献のフォーマット
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% You can make it. :)
