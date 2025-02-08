@@ -1,9 +1,9 @@
 #!/usr/bin/env perl
 @default_files	  = ('main.tex');
 
-$do_cd = 1;
+#$do_cd = 1;
 
-$pdf_mode          = 3;
+$pdf_mode         = 3;
 $latex            = 'uplatex -halt-on-error';
 $latex_silent     = 'uplatex -halt-on-error -interaction=batchmode';
 $bibtex           = 'upbibtex';
